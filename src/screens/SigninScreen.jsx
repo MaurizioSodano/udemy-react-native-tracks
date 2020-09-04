@@ -11,7 +11,7 @@ const SigninScreen=()=>{
       <AuthForm 
            headerText="Sign In for Tracker"
            errorMessage={state.errorMessage}
-           submitButtonText="Sign Ip"
+           submitButtonText="Sign In"
            onSubmit={signin}
            />
        <NavLink 
