@@ -10,9 +10,7 @@ const SignupScreen=({navigation})=>{
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
 
-    console.log(state);
-    
-    return <View style={styles.container}>
+     return <View style={styles.container}>
         <Spacer>
             <Text h3>Sign Up for Tracker</Text>
         </Spacer>
@@ -33,7 +31,7 @@ const SignupScreen=({navigation})=>{
             autoCapitalize="none"
             autoCorrect={false}                  
             />
-        {state.errorMessage?(<Text style={styles.errorMessage}>{state.errorMessage}</Text>) : null}
+        {state.errorMessage!==""?(<Text style={styles.errorMessage}>{state.errorMessage}</Text>) : null}
         <Spacer/>
         <Button title="Sign Up" onPress={()=>signup({email,password})}/>
         
