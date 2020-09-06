@@ -17,14 +17,11 @@ const authReducer=(state,action)=>{
 };
 
 const tryLocalSignin=dispatch=>async ()=>{
-    console.log("getting stored token")
     const token=await AsyncStorage.getItem("token");
     if(token){
         dispatch({type:"signin",payload:token});
-        console.log("found Token");
         navigate("mainFlow");
     }else  {
-        console.log("Not found Token");
         navigate("Signup");
     }
 }
