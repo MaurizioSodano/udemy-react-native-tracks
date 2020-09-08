@@ -9,7 +9,9 @@ const trackReducer=(state,action)=>{
 }
 //2.action functions
 const fetchTrack=dispatch=>()=>{};
-const createTrack=dispatch=>()=>{};
+const createTrack=dispatch=>(name,locations)=>{
+    console.log(name,locations.length);
+};
 
 //3.export
 export const {Provider,Context}=createDataContext(
