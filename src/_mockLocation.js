@@ -1,8 +1,18 @@
 import * as Location from "expo-location";
 
-const tenMetersWithDegrees=0.0001;
+const tenMetersWithDegrees=0.001;
 
 const getLocation=increment=>{
+    const latCentre=40.9316678;
+    const longCentre=14.433171;
+    const xSpiral=(i)=>{
+        let angle=0.1*i;
+        return latCentre+(1+angle)*Math.cos(angle)*tenMetersWithDegrees;
+    }
+    const ySpiral=(i)=>{
+        let angle=0.1*i;
+        return longCentre+(1+angle)*Math.sin(angle)*tenMetersWithDegrees;
+    }
     return {
         timestamp:10000000,
         coords:{
@@ -11,8 +21,8 @@ const getLocation=increment=>{
             accuracy:5,
             altitudeAccuracy:5,
             altitude:5,
-            latitude: 40.9316678 + increment * tenMetersWithDegrees,
-            longitude: 14.433171 + increment * tenMetersWithDegrees,
+            latitude: xSpiral(increment),
+            longitude: ySpiral(increment),
         }
     }
 }
