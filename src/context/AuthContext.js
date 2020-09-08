@@ -3,6 +3,7 @@ import createDataContext from "./createDataContext";
 import trackerApi from "../api/tracker"
 import {navigate} from "../navigationRef";
 
+//Reducer
 const authReducer=(state,action)=>{
     switch(action.type) {
         case "add_error":
@@ -18,6 +19,7 @@ const authReducer=(state,action)=>{
     }
 };
 
+//Helping functions
 const tryLocalSignin=dispatch=>async ()=>{
     const token=await AsyncStorage.getItem("token");
     if(token){
@@ -56,9 +58,7 @@ const signin=dispatch=> async ({email,password})=>{
     } catch (error) {
         dispatch({type:"add_error", payload:"Something went wrong with sign in"});
     }
-    // Try to signin
-    // Handle success by updating state
-    // Handle failure by showing error message (somehow)
+
 };
 
 const signout=dispatch=> async ()=>{
@@ -68,9 +68,9 @@ const signout=dispatch=> async ()=>{
 };
 
 
-
+//Export
 export const {Provider,Context}=createDataContext(
-    authReducer,
-    {signin, signout, signup,clearErrorMessage,tryLocalSignin},
-    {token:null, errorMessage:""}
+    authReducer, //reducer
+    {signin, signout, signup,clearErrorMessage,tryLocalSignin}, //export helping function
+    {token:null, errorMessage:""} //initial state
 )
