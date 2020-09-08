@@ -35,6 +35,7 @@ const signup=dispatch=>   async ({email,password})=>{
         const response=await trackerApi.post("/signup",{email,password});
         await AsyncStorage.setItem("token",response.data.token);
         dispatch( {type:"signin",payload:response.data.token});
+
         navigate("TrackList");
 
     } catch (error) {
@@ -53,7 +54,7 @@ const signin=dispatch=> async ({email,password})=>{
         dispatch( {type:"signin",payload:response.data.token});
         navigate("TrackList");
     } catch (error) {
-        dispatch({type:"add_error", payload:"Something went wrong with sign up"});
+        dispatch({type:"add_error", payload:"Something went wrong with sign in"});
     }
     // Try to signin
     // Handle success by updating state
